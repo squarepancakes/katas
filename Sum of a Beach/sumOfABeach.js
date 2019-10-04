@@ -11,4 +11,11 @@ const sumOfABeach = string => {
 	return total;
 };
 
+
+const sumOfABeach = string => {
+	let count = 0;
+	const keyWords = ["water", "sun", "fish", "sand"];
+	
+}
+
 module.exports = sumOfABeach;
