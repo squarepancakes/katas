@@ -1,8 +1,8 @@
 function calculateCharges(userAndTime) {
 	const users = Object.keys(userAndTime);
 	const parkingCharges = { User: "Fees" };
-	const minFees = 2.00;
-	const minHours = 3.00;
+	const minFees = 2.0;
+	const minHours = 3.0;
 	const hourlyFeeAfterFirst3Hours = 0.5;
 	const maxFees = 10.0;
 	const maxHours = (maxFees - minFees) / hourlyFeeAfterFirst3Hours + minHours;
@@ -19,8 +19,11 @@ function calculateCharges(userAndTime) {
 			totalFees += maxFees;
 			return (parkingCharges[user] = `$${maxFees.toFixed(2)}`);
 		}
-		const exceededTime = time - 3;
-		const fees = (2 + Math.ceil(exceededTime) * 0.5).toFixed(2);
+		const exceededTime = time - minHours;
+		const fees = (
+			minFees +
+			Math.ceil(exceededTime) * hourlyFeeAfterFirst3Hours
+		).toFixed(2);
 		totalFees += Number(fees);
 		return (parkingCharges[user] = `$${fees}`);
 	});
